@@ -142,7 +142,7 @@ Trait StrTrait
      */
     public static function toArray(string $value, string $delimiter, $replace = null)
     {
-        $replace && $value = self::replace($replace, '', $value);
+        $replace && $value = str_replace($replace, '', $value);
         $value = trim($value, $delimiter);
 
         if (strpos($value, $delimiter) !== false) {
@@ -153,19 +153,5 @@ Trait StrTrait
             $items = [];
         }
         return $items;
-    }
-
-    /**
-     *
-     * @author zxf
-     * @date    2022年8月23日
-     * @param  string|array $search
-     * @param  string|array $replace
-     * @param  string|array $subject
-     * @return mixed
-     */
-    public static function replace($search, $replace, $subject)
-    {
-        return str_replace($search, $replace, $subject);
     }
 }
