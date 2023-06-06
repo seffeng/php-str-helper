@@ -16,7 +16,7 @@ Trait StrTrait
      *
      * @author zxf
      * @date   2020年4月30日
-     * @param  int $length
+     * @param  integer $length
      * @param  bool $diff   区分大小写
      * @return string
      */
@@ -39,7 +39,7 @@ Trait StrTrait
      *
      * @author zxf
      * @date   2020年4月30日
-     * @param  int $length
+     * @param  integer $length
      * @return string
      */
     public static function generateNumberCode(int $length)
@@ -54,7 +54,7 @@ Trait StrTrait
      *
      * @author zxf
      * @date   2020年4月30日
-     * @param  int $length
+     * @param  integer $length
      * @param  bool $diff   区分大小写
      * @return string
      */
@@ -73,7 +73,7 @@ Trait StrTrait
      *
      * @author zxf
      * @date   2020年4月30日
-     * @param  int $length
+     * @param  integer $length
      * @return string
      */
     public static function generateAlgorithm(string $letters, string $vowels, int $length)
@@ -96,7 +96,7 @@ Trait StrTrait
      * Safely casts a float to string independent of the current locale.
      *
      * The decimal separator will always be `.`.
-     * @param float|int $number a floating point number or integer.
+     * @param float|integer $number a floating point number or integer.
      * @return string the string representation of the number.
      */
     public static function floatToString($number)
