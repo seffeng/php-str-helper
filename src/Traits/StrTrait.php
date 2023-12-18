@@ -154,4 +154,25 @@ Trait StrTrait
         }
         return $items;
     }
+
+    /**
+     *
+     * @author zxf
+     * @date   2023-12-18
+     * @param string $string
+     * @param array|null $search
+     * @param string $replace
+     * @return integer
+     */
+    public static function wordLength(string $string, array $search = null, string $replace = '')
+    {
+        if (is_null($search)) {
+            $search = [
+                '&nbsp;', '~', '`', '·', '!', '！', '@', '#', '￥', '$', '%', '^', '…', '&', '*', '(', ')', '（', '）', '-',
+                '—', '=', '+', '{', '}', '[', ']', '\\', '|', '、', '；', ':', '：', '‘', '’', '“', '”', ' ', '"', ',', '，',
+                '<', '>', '《','》', '.', '。', '？', '?', '/', '、'
+            ];
+        }
+        return mb_strlen(str_replace($search, $replace, strip_tags(htmlspecialchars_decode($string))));
+    }
 }
