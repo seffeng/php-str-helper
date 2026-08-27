@@ -118,7 +118,7 @@ Trait StrTrait
      * @param string $suffix If the name component ends in suffix this will also be cut off.
      * @return string the trailing name component of the given path.
      */
-    public static function basename($path, $suffix = '')
+    public static function basename(string $path, string $suffix = '')
     {
         if (($len = mb_strlen($suffix)) > 0 && mb_substr($path, -$len) === $suffix) {
             $path = mb_substr($path, 0, -$len);
@@ -164,7 +164,7 @@ Trait StrTrait
      * @param string $replace
      * @return integer
      */
-    public static function wordLength(string $string, array $search = null, string $replace = '')
+    public static function wordLength(string $string, ?array $search = null, string $replace = '')
     {
         if (is_null($search)) {
             $search = [
