@@ -159,20 +159,38 @@ Trait StrTrait
      *
      * @author zxf
      * @date   2023-12-18
-     * @param string $string
-     * @param array|null $search
-     * @param string $replace
-     * @return integer
+     * @param  string $string
+     * @param  array|null $search
+     * @param  string $replace
+     * @return int
      */
     public static function wordLength(string $string, ?array $search = null, string $replace = '')
+    {
+        return mb_strlen(self::htmlToText($string, $search, $replace));
+    }
+
+    /**
+     *
+     * @author zxf
+     * @date   2026-11-11
+     * @param  string $string
+     * @param  array|null $search
+     * @param  string $replace
+     * @return string
+     */
+    public static function htmlToText(string $string, ?array $search = null, string $replace = '')
     {
         if (is_null($search)) {
             $search = [
                 '&nbsp;', '~', '`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '-', '=', '{', '[', '}', ']', '|', '\\',
                 ':', ';', '"', '\'', '<', ',', '>', '.', '?', '/', '·', '！', '￥', '…', '（', '）', '—', '【', '｛', '、', '：', '；', ' ',
-                '“', '‘', '’', '，', '《', '。', '？', '》', '”', '｝', '】'
+                '“', '‘', '’', '，', '《', '。', '？', '》', '”', '｝', '】', '　'
             ];
         }
-        return mb_strlen(str_replace($search, $replace, strip_tags(htmlspecialchars_decode($string))));
+        $text = strip_tags(htmlspecialchars_decode($string));
+        if (is_array($search) && count($search) > 0) {
+            $text = str_replace($search, $replace, $text);
+        }
+        return $text;
     }
 }
